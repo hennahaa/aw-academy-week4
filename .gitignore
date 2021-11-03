@@ -1,3 +1,11 @@
+/.vscode
+src/data/database.ini
+venv/
+.idea/
+__pycache__
+
+#sekalaisia tiedostoja joita en tuuppaa gittiin muuten vain
+harkka5.py
+sql-world-harkka.png
 world.sql
 sql-harkkoja.sql
-/.vscode
