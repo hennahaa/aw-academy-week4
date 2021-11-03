@@ -1,2 +1,2 @@
 # AW Academy Week 4
-sekalaisia SQL tehtäviä
+Sekalaisia Python- ja SQL-tehtäviä AW Academyn viikolta 4.
