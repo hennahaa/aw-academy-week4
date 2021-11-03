@@ -145,4 +145,3 @@ WHERE population >= 1000000 AND country_code IN
 (SELECT country_code
 FROM country_language
 WHERE language = 'English');
-
