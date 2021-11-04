@@ -8,21 +8,7 @@ from google.cloud import storage
     versio jossa cloud storage-osoite on geneerinen osoite, johon ei välttämättä pääse käsiksi,
     ja sitten signed osoite jossa on rajallinen pääsy tiedostoon sen jälkeen kun se on ladattu buckettiin'''
 
-#operoidaan allaolevan tapaisessa taulussa, joka on jo olemassa
-'''
-CREATE TABLE metadata (
-Id SERIAL PRIMARY KEY, -- Luodaan itsestään kasvava primääriavain
-bucket varchar(255) NOT NULL,
-blob varchar(255) NOT NULL,
-url varchar(255),
-person_id int NOT NULL,
-CONSTRAINT fk_person
-    FOREIGN KEY(person_id)
-        REFERENCES person(id)
-);
-'''
-
-#funktio metadatan lisäykseen
+#funktio metadatan lisäykseen metadata-tauluun
 def lisaa_metadata(bucket_name, blob_name, person_id, url):
     conn = None
     try:
@@ -60,9 +46,8 @@ def lataa_tiedosto_storageen(bucket_name, file_name, blob_name,person_id):
     #lisätään tauluun metadata jossa tässä luotu signed url
     lisaa_metadata(bucket_name,blob_name,person_id,url)
 
-    #jos ei haluttaisi käyttää signed urlia niin muodostettaisiin cloud storage url näin
+    #jos ei muodostettaisi signed urlia niin muodostettaisiin cloud storage url näin kun upload on tehty
     #gs_url = f"http://{bucket_name}.storage.googleapis.com/{blob_name}"
-    #jolloin se lisättäisiin sitten metadataan näin
     #lisaa_metadata(bucket_name,blob_name,person_id,gs_url)
 
 def hae_storageurl(blob_name):
